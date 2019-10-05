@@ -1,6 +1,5 @@
 # ITMO-Programming-1-sem
 Lab. works on programming 1 sem. in ITMO University
-Лабароторные работы по программированию, 1 семестр Университет ИТМО
 
 1. [x] 1. [Console application develop \ Разработка консольного приложения](#)
 2. [x] 2. [Calculation of function values at a given point \ Расчёт значения функции в заданной точке](#)
