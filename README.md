@@ -15,4 +15,4 @@ Lab. works on programming 1 sem. in ITMO University
 12. [x] 12. [Input - output operations \ Операции ввода-вывода](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2012)
 13. [ ] 13. [MP3 file meta-information editor \ Редактор метаинформации mp3-файла](#)
 14. [x] 14. [Conway's Game of Life \ Игра жизнь](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2014)
-15. [ ] 15. [Coming soon \ Ждем-с](#)
+15. [ ] 15. [Archiver \ Архиватор](#)
