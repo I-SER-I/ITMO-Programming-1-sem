@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//C:\Users\Sergey\Desktop\Proga\bin\Debug
-//--input LIFE.bmp --output Sergey --max_iter 10
-
 void GameLife(int** life, int hei, int wid){
     int N;
     int tmp[hei][wid];
@@ -51,7 +48,10 @@ int main(int argc, char* argv[]){
     int maxiter, dumpfreq = 1;
     char* dirname;
     FILE* file;
-    for(i = 0; i < argc; i++){
+	
+	//GAME SETTING
+    
+	for(i = 0; i < argc; i++){
         if(!strcmp("--input", argv[i])){
             file = fopen(argv[1 + 1], "rb");
         }
@@ -66,7 +66,8 @@ int main(int argc, char* argv[]){
             dumpfreq = strtol(argv[i + 1], 0, 10);
         }
     }
-
+	
+	//READ IMAGE SIZE, HEIGHT, WIDTH, BYTE
     fread(header, 1, 54, file);
     Image.Width = header[21] * 256 * 256 * 256 + header[20] * 256 * 256 + header[19] * 256 + header[18];
     Image.Height = header[25] * 256 * 256 * 256 + header[24] * 256 * 256 + header[23] * 256 + header[22];
@@ -77,7 +78,8 @@ int main(int argc, char* argv[]){
     int** img = (int**)malloc(Image.Height * sizeof(int*));
     for(i = 0; i < Image.Height; i++)
         img[i] = (int*)malloc(Image.Width * sizeof(int));
-
+	
+	//MAKE TO ONE-ZERO ARRAY
     k = -(Image.Width % 4);
     for(i = Image.Height - 1; i >= 0; i--){
         k += (Image.Width % 4);
@@ -89,6 +91,7 @@ int main(int argc, char* argv[]){
             k += 3;
         }
     }
+	
 	for (l = 0; l <= maxiter; l++){
         if(l % dumpfreq == 0){
             char filename[l];
@@ -98,6 +101,7 @@ int main(int argc, char* argv[]){
             FILE* life = fopen(way, "w");
             fwrite(header, 1, 54, life);
             m = 0;
+			// MAKE BITMAP
             for (i = Image.Height - 1; i >= 0; i--){
                 for (j = 0; j < Image.Width; j++){
                     for (k = 0; k < 3; k++) {
@@ -113,9 +117,10 @@ int main(int argc, char* argv[]){
                     m++;
                 }
             }
-            fwrite(imagebyte, 1, Image.Size, life);
+ 			fwrite(imagebyte, 1, Image.Size, life);
             fclose(life);
         }
+		//GAME
 		GameLife(img, Image.Height, Image.Width);
 	}
 	free(img);
