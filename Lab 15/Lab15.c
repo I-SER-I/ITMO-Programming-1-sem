@@ -110,7 +110,3 @@ int main(int argc, char* argv[]){
     }
     return 0;
 }
-//C:\Users\Sergey\Desktop\Proga\bin\Debug
-//arc --file  data.arc --create a.txt b.bin c.bmp
-//arc --file  data.arc --extract
-//arc --file  data.arc --list
