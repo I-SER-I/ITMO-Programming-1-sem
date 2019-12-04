@@ -1,18 +1,6 @@
 # Архиватор
 
-Для того чтобы воспользоваться *архиватором*:
-
- 1. Скачать исходные файлы и заголовочные файлы:
-    * main.c afile.c arch.c argtools.c
-    * afile.h arch.h argtools.h
- 2. Скомпилировать программу с помощью команды:
- 
- ```bash
- gcc -o ./arch.exe ./main.c ./afile.c ./arch.c ./argtools.c
- ```
- 
- 3. Запутить **arch.exe** с данными параметрами:
- 
+Параметры:
 
 | Параметр | Описние |
 |---|---|
@@ -21,3 +9,8 @@
 |**--extract**|Команда для извлечения из файлового архива файлов|
 |**--list**|Команда для предоставления списка файлов, хранящихся в архиве|
 |**FILE1 FILE2 …. FILEN**|Свободные аргументы для передачи списка файлов для запаковки|
+
+Пример ввода в консоль:
+    * progarmm.exe ser --file archive.ser --create a.txt b.bin c.bmp - создает файл archive.ser, который состоит из  a.txt b.bin c.bmp
+    * progarmm.exe ser --file archive.ser --extract - извлекает все файлы в архиве archive.ser
+    * progarmm.exe ser --file archive.ser --list - выводит в консоль содержимое архива archive.ser
