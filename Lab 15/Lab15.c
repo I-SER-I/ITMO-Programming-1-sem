@@ -1,55 +1,41 @@
 #include <stdio.h>
 
 void Extract(char* arcname){
-    FILE* arcfile = fopen(arcname, "rb");
-    FILE* file;
-    unsigned long long int nowposition = 0;
-    unsigned long long int startposition = 0;
-    unsigned long long int filesize;
-    char filename[128];
-    int temp;
-    while ((temp = getc(arcfile)) != EOF) {
-        startposition++;
-        if (temp == '\n'){
-            break;
-        }
+    FILE* arch = fopen(arcname, "rb+wb");
+     unsigned long long int  now_position = 0;
+     unsigned long long int  start_position = 0;
+    int c;
+    while ((c = getc(arch)) != EOF) {
+        start_position++;
+        if (c == '\n') 
+		break;
     }
-    fseek(arcfile, 0, SEEK_SET);
-    while (fscanf(arcfile, "<%s:%llu>", filename, &filesize) != 0){
+    fseek(arch, 0, SEEK_SET);
+     char filename[128] = {0};
+     unsigned long long int  filesize;
+     FILE *file;
+    while (fscanf(arch, "< %s : %llu >", filename, &filesize) != 0) {
         file = fopen(filename, "wb");
-        if (file == NULL)
-            break;
-        nowposition = ftell(arcfile);
-        fseek(arcfile, startposition, SEEK_SET);
-        startposition += filesize;
+        if (file == NULL) break;
+        now_position = ftell(arch);
+        fseek(arch, start_position, SEEK_SET);
+        start_position += filesize;
         while (filesize-- > 0)
-            putc((temp = getc(arcfile)), file);
-        fseek(arcfile, nowposition, SEEK_SET);
+            putc((c = getc(arch)), file);
+        fseek(arch, now_position, SEEK_SET);
         fclose(file);
+
     }
-    printf("\n + Unzipping sucssess + \n");
+	printf("\n + Unzipping sucssess + \n");
 }
 
 void List(char* arcname){
     FILE* arcfile = fopen(arcname, "rb");
-    char filename[128];
-    int reading = 0;
-    int temp;
-    int i;
+    char filename[128] = {0};
+    unsigned long long int  filesize;
     printf("File list:\n");
-    while ((temp = getc(arcfile)) != EOF) {
-        if (temp == ':'){
-            reading = 0;
-            printf("\t%s\n", filename);
-        }
-        if (reading){
-            filename[i] = temp;
-            i++;
-        }
-        if (temp == '<'){
-            reading = 1;
-            i = 0;
-        }
+    while (fscanf(arcfile, "< %s : %llu >", filename, &filesize) != 0) {
+        printf("\t%s\n", filename);
     }
     fclose(arcfile);
 }
@@ -70,7 +56,7 @@ void Create(char* arcname, int filecount, char* files[]){
         fclose(file);
     }
     for (i = 0; i < filecount - 5; i++)
-        fprintf(arcfile, "<%s:%llu>", files[i + 5], nameandsize[i]);
+        fprintf(arcfile, "< %s : %llu >", files[i + 5], nameandsize[i]);
     fprintf(arcfile, "\n");
     for (i = 5; i < filecount; i++){
         file = fopen(files[i], "rb");
