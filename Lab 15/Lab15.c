@@ -7,8 +7,8 @@ void Extract(char* arcname){
     int c;
     while ((c = getc(arch)) != EOF) {
         start_position++;
-        	if (c == '\n') 
-	break;
+        if (c == '\n') 
+			break;
     }
     fseek(arch, 0, SEEK_SET);
     char filename[128] = {0};
