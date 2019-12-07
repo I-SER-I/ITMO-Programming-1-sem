@@ -2,21 +2,22 @@
 
 void Extract(char* arcname){
     FILE* arch = fopen(arcname, "rb+wb");
-     unsigned long long int  now_position = 0;
-     unsigned long long int  start_position = 0;
+    unsigned long long int  now_position = 0;
+    unsigned long long int  start_position = 0;
     int c;
     while ((c = getc(arch)) != EOF) {
         start_position++;
-        if (c == '\n') 
-		break;
+        	if (c == '\n') 
+	break;
     }
     fseek(arch, 0, SEEK_SET);
-     char filename[128] = {0};
-     unsigned long long int  filesize;
-     FILE *file;
+    char filename[128] = {0};
+    unsigned long long int  filesize;
+    FILE *file;
     while (fscanf(arch, "< %s : %llu >", filename, &filesize) != 0) {
         file = fopen(filename, "wb");
-        if (file == NULL) break;
+        if (file == NULL) 
+			break;
         now_position = ftell(arch);
         fseek(arch, start_position, SEEK_SET);
         start_position += filesize;
@@ -24,7 +25,6 @@ void Extract(char* arcname){
             putc((c = getc(arch)), file);
         fseek(arch, now_position, SEEK_SET);
         fclose(file);
-
     }
 	printf("\n + Unzipping sucssess + \n");
 }
