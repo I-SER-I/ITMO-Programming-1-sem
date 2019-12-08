@@ -1,17 +1,8 @@
 # Conway's Game of Life
 
  Для того чтобы воспользоваться *игрой*:
- 
- 1. Скачать исходные файлы и заголовочные файлы:
-    * main.c bmp.c settings.c gameoflife.c
-    * bmp.h settings.h gameoflife.h
- 2. Скомпилировать программу с помощью команды:
- 
- ```bash
- gcc -o ./game.exe ./main.c ./bmp.c ./settings.c ./gameoflife.c
- ```
- 
- 3. Запутить **game.exe** с данными параметрами:
+
+ Запутить **game.exe** с данными параметрами:
  
 | Параметр | Значение по умолчанию | Описние |
 |---|:---:|---|
