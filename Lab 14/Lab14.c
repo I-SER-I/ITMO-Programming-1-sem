@@ -92,7 +92,7 @@ int main(int argc, char* argv[]){
         }
     }
 	
-	for (l = 0; l <= maxiter; l++){
+	for (l = 1; l <= maxiter; l++){
         if(l % dumpfreq == 0){
             char filename[l];
             char way[20];
