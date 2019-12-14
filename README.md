@@ -13,6 +13,6 @@ Lab. works on programming 1 sem. in ITMO University
 10. [x] 10. [Functions \ Функции](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2010)
 11. [x] 11. [Using header files \ Использование заголовочных файлов](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2011)
 12. [x] 12. [Input - output operations \ Операции ввода-вывода](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2012)
-13. [ ] 13. [MP3 file meta-information editor \ Редактор метаинформации mp3-файла](#)
+13. [x] 13. [MP3 file meta-information editor \ Редактор метаинформации mp3-файла](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2013)
 14. [x] 14. [Conway's Game of Life \ Игра жизнь](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2014)
 15. [x] 15. [Archiver \ Архиватор](https://github.com/geySerP/ITMO-Programming-1-sem/tree/master/Lab%2015)
